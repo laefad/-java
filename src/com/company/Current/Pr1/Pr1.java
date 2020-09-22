@@ -59,6 +59,20 @@ public class Pr1 {
             return arr;
         }
 
+        private static int[] generateArray2(int length)
+        {
+            if (length < 1)
+                throw new NegativeArraySizeException();
+
+            int[] arr = new int[length];
+
+            int i = 0;
+            while (i < length)
+                arr[i++] = (int) Math.random() * 229283123;
+
+            return arr;
+        }
+
         private static void printArray(int[] arr)
         {
             System.out.print("Array : ");
@@ -69,7 +83,7 @@ public class Pr1 {
 
         public static void generatePrintSortPrintArray(int length)
         {
-            int[] arr = generateArray(length);
+            int[] arr = generateArray2(length);
             printArray(arr);
             Arrays.sort(arr);
             printArray(arr);
