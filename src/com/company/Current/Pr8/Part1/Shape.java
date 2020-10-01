@@ -1,14 +1,16 @@
 package com.company.Current.Pr8.Part1;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-public abstract class Shape
+public abstract class Shape extends JComponent
 {
     Point2D.Double position;
     Color color;
 
-    public abstract void paint(Graphics g);
+    @Override
+    public abstract void  paintComponent(Graphics g);
 
     Shape (Point2D.Double point, Color color)
     {

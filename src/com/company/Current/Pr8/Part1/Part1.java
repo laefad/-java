@@ -3,38 +3,56 @@ package com.company.Current.Pr8.Part1;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.util.Random;
 
 //Создать окно, нарисовать в нем 20 случайных фигур, случайного цвета.
 //Классы фигур должны наследоваться от абстрактного класса Shape,
 //в котором описаны свойства фигуры: цвет, позиция.
 
 
-public class Part1{
+public class Part1 extends JFrame {
 
+    private static final Random rand = new Random();
     private static final int width = 1600;
     private static final int height = 900;
 
-    public static void main(String[] args)
-    {
-        JFrame frame = new JFrame("Практическая № 8 задание 1");
-        frame.setSize(width, height);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public Part1() {
+        super("Практическая № 8 задание 1");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        JLayeredPane lp = getLayeredPane();
 
-        frame.setVisible(true);
-
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 200; i++)
         {
-            int r = i * 20 + i + 10;
-            int x = i * 20 + i + 10;
-            int y = i * 20 + i + 10;
+            int x = rand.nextInt(width);
+            int y = rand.nextInt(height);
+            int r = rand.nextInt(200);
 
-            Color c = new Color( i *25 , i * 10 + 100, i * 15 );
-            System.out.println(String.format("x = %d, y = %d",x,y));
-            Circle circle = new Circle(new Point2D.Double(x,y), r, c);
-            circle.paint(frame.getGraphics());
+            int f = rand.nextInt(2);
+
+            Color c = new Color( rand.nextInt(255) , rand.nextInt(155) + 100, rand.nextInt(255) );
+
+            if (f == 0)
+            {
+                Circle circle = new Circle(new Point2D.Double(0, 0), r, c);
+                circle.setBounds(x - r, y + r, r * 2, r * 2);
+                lp.add(circle, JLayeredPane.PALETTE_LAYER);
+            }
+            else
+            {
+                Square square = new Square(new Point2D.Double(0, 0), r, c);
+                square.setBounds(x - r, y + r, r * 2, r * 2);
+                lp.add(square, JLayeredPane.PALETTE_LAYER);
+            }
         }
 
+        setSize(width, height);
+        setVisible(true);
+    }
+
+
+    public static void main(String[] args)
+    {
+        new Part1();
     }
 
 }

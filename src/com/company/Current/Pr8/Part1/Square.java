@@ -3,21 +3,20 @@ package com.company.Current.Pr8.Part1;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-public class Circle extends Shape {
-
-    private int r;
+public class Square extends Shape {
+    private int a;
 
     @Override
     public void paintComponent(Graphics g)
     {
         g.setColor(color);
-        g.fillOval((int)position.getX(), (int)position.getY(), r, r);
+        g.fillRect((int)position.getX(), (int)position.getY(), a, a);
     }
 
-    Circle(Point2D.Double center, int r, Color color)
+    Square(Point2D.Double center, int a, Color color)
     {
         super(center, color);
-        this.r = r;
+        this.a = a;
         setOpaque(false);
     }
 }
