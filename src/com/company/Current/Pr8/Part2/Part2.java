@@ -12,19 +12,15 @@ public class Part2 {
         // path = src/com/company/Current/Pr8/Part2/squirrel.jpg
         String path = arguments[0];
 
-        JPanel panel = new JPanel();
-
-        BufferedImage image = ImageIO.read(new File(path));
-        JLabel label = new JLabel(new ImageIcon(image));
-        panel.add(label);
-
         JFrame frame = new JFrame("Практическая № 8 задание 2");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        frame.add(panel);
+        BufferedImage image = ImageIO.read(new File(path));
+        JLabel label = new JLabel(new ImageIcon(image));
+
+        frame.add(label);
 
         frame.pack();
         frame.setVisible(true);
-
     }
 }

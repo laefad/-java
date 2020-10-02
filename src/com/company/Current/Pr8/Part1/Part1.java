@@ -2,6 +2,7 @@ package com.company.Current.Pr8.Part1;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
@@ -21,32 +22,37 @@ public class Part1 extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         JLayeredPane lp = getLayeredPane();
 
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 20; i++)
         {
-            int x = rand.nextInt(width);
-            int y = rand.nextInt(height);
-            int r = rand.nextInt(200);
-
-            int f = rand.nextInt(2);
-
-            Color c = new Color( rand.nextInt(255) , rand.nextInt(155) + 100, rand.nextInt(255) );
-
-            if (f == 0)
-            {
-                Circle circle = new Circle(new Point2D.Double(0, 0), r, c);
-                circle.setBounds(x - r, y + r, r * 2, r * 2);
-                lp.add(circle, JLayeredPane.PALETTE_LAYER);
-            }
-            else
-            {
-                Square square = new Square(new Point2D.Double(0, 0), r, c);
-                square.setBounds(x - r, y + r, r * 2, r * 2);
-                lp.add(square, JLayeredPane.PALETTE_LAYER);
-            }
+            CreateFigure(lp);
         }
 
         setSize(width, height);
         setVisible(true);
+    }
+
+    public static void CreateFigure(JLayeredPane lp)
+    {
+        int x = rand.nextInt(width);
+        int y = rand.nextInt(height);
+        int r = rand.nextInt(200);
+
+        int f = rand.nextInt(2);
+
+        Color c = new Color( rand.nextInt(255) , rand.nextInt(155) + 100, rand.nextInt(255) );
+
+        if (f == 0)
+        {
+            Circle circle = new Circle(new Point2D.Double(0, 0), r, c);
+            circle.setBounds(x, y, r * 2, r * 2);
+            lp.add(circle, JLayeredPane.PALETTE_LAYER);
+        }
+        else
+        {
+            Square square = new Square(new Point2D.Double(0, 0), r, c);
+            square.setBounds(x, y, r * 2, r * 2);
+            lp.add(square, JLayeredPane.PALETTE_LAYER);
+        }
     }
 
 

@@ -18,34 +18,27 @@ public class Part3 {
     public static void main(String[] arguments) throws IOException {
 
         String path = "src/com/company/Current/Pr8/Part3/Images/";
-        String[] paths = {path + "0.jpg", path + "1.jpg"};
 
-        JPanel panel = new JPanel();
+        BufferedImage[] images = new BufferedImage[2];
+        images[0] = ImageIO.read(new File(path + "0.jpg"));
+        images[1] = ImageIO.read(new File(path + "1.jpg"));
 
-        //JFrame.setDefaultLookAndFeelDecorated(true);
+        JLabel label = new JLabel(new ImageIcon(images[0]));
+
         JFrame frame = new JFrame("Практическая № 8 задание 3");
         frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
-        int count = 1;
-        while(true)
-        {
-            count++;
-            count %= 2;
+        frame.add(label);
 
-            frame.repaint();
-            BufferedImage image = ImageIO.read(new File(paths[count]));
-            JLabel label = new JLabel(new ImageIcon(image));
-            panel.add(label);
+        for(int i = 0; i < 10; i++) {
 
-            frame.add(panel);
-            frame.repaint();
-            try
-            {
-                Thread.sleep(100);
-            }
-            catch (InterruptedException e){
+            label.setIcon(new ImageIcon(images[i%2]));
+
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
                 break;
             }
         }
