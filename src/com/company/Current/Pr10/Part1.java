@@ -1,9 +1,11 @@
 package com.company.Current.Pr10;
 
+import java.sql.SQLOutput;
+
 public class Part1 {
 
     public static void main(String[] args) {
-        int k = 4, sum = 20;
+        int k = 32, sum = 9;
         int totalCount = 0;
         for (int i = 1; i < 10; i++)
         {
@@ -14,10 +16,10 @@ public class Part1 {
 
     public static int recursion(int dk, int dsum)
     {
-        if (dk == 0 || dsum < 0 )
-            return 0;
-        else if (dk == 0 && dsum == 0)
+        if (dk == 0 && dsum == 0 )
             return 1;
+        else if (dk == 0 || dsum < 0)
+            return 0;
 
         int sum = 0;
 
